@@ -1,4 +1,4 @@
-# Parking Slot Availability System
+# Parking System
 
 ## Description
 This system manages parking slots, reservations, and payment.
