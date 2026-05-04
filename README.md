@@ -4,4 +4,4 @@
 This system manages parking slots, reservations, and payment.
 
 ## Presentation
-[View Slides](./parking%20system%20(5).pdf)
+[View Slides](./parking-system.pdf)
