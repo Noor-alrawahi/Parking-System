@@ -9,7 +9,7 @@ class ParkingSession{
   int endHour;
   bool occupied;
 public:
-   parkingSession();
+   ParkingSession();
 
    void startSession( int resID, int start );
    void endSession(int end);
