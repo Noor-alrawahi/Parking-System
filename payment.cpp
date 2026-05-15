@@ -7,7 +7,7 @@ Payment::Payment() {
 
 void Payment::calculate( double rate, int duration, bool wrongSlot, bool disabledViolation, bool disabledPermit){
    if (disabledPermit){
-     amount=0
+     amount=0;
      return ;
    }
    amount= rate* duration;
@@ -17,7 +17,7 @@ void Payment::calculate( double rate, int duration, bool wrongSlot, bool disable
 
    if (disabledViolation)
      amount+=50;
-
+}
 void Payment::display() const {
   cout<<"Total payment: "<< amount<<" OMR\n";
 }
