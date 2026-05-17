@@ -2,12 +2,9 @@
 
 #include "ParkingSession.h"
 
-int ParkingSession::nextID=1;
-
 ParkingSession::ParkingSession(){
 
-   reservationID=nextID;
-   nextID++;
+   reservationID=0;
    startHour=0;
    endHour=0;
    occupied=false;
