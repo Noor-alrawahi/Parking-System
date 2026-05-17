@@ -10,7 +10,7 @@ protected: //derived class can access this
 int slotNumber;
 bool occupied;
 bool reserved;
-bool disabled;
+bool disabledOnly;
 
 public:
 ParkingSlot(int num, disabled); //constructor
@@ -19,7 +19,7 @@ virtual ~ParkingSlot(); //distructor
 int getSlotNumber() const;
 bool isOccupied() const;
 bool isReserved() const;
-bool isDisabled() const;
+bool isDisabledOnly() const;
 
 void reserve();
 void occupy();
