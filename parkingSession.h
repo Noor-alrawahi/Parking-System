@@ -8,6 +8,7 @@ class ParkingSession{
   int startHour;
   int endHour;
   bool occupied;
+  static int nextID;
 public:
    ParkingSession();
 
