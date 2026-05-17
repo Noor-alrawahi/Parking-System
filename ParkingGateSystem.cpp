@@ -41,7 +41,6 @@ private:
 
         return NULL;
     }
-
 public:
     ParkingGateSystem() {
 
@@ -114,4 +113,20 @@ public:
       customerCount++;
 
       cout<<"Customer registered successfully.\n";
+    }
+
+    void showSlots() {
+
+        count << "\n==== PRKING SLOTS =====\n";
+
+        for (ParkingSlot* s : slots)
+            s->display();
+
+        cout << "\nOccupied Slots: "
+             << getOccupiedCount()
+             << endl;
+
+        cout << "Available Slots: "
+             << getAvailableCount()
+             << endl;
     }
