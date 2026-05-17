@@ -239,6 +239,95 @@ if (res->hasWrongSlot())
     cout << "Wrong slot violation detected.\n";
 }
 
+void ParkingGateSystem::exitGate() {
+
+    int reservationID =
+Customer::readInt(
+"Enter reservation ID: ",
+1,
+1000
+);
+
+Reservation* res =
+findReservation(reservationID);
+
+if (res == NULL) {
+
+cout << "ERROR: Reservation not found.\n";
+return;
+}
+
+ParkingSession* session =
+findSession(reservationID);
+
+if (session == NULL) {
+
+cout << "ERROR: No active session found.\n";
+return;
+}
+
+int endHour = 
+Customer::readHourWithAmPm(
+"Enter exit hour (example 4PM): "
+);
+
+session->endSession(endHour);
+
+int duration =
+session->getDuration();
+
+int actualSlotNumber = 
+res->getActualSlot();
+
+ParkingSlot* actualSlot =
+slots[actualSlotNumber - 1];
+
+Customer* customer =
+findCustomer)
+res->getCustomerID()
+    );
+
+bool disabledPermit =
+customer->hasDisabledPermit();
+
+bool disabledViolation =
+actualSlot->isDisabledOnly()
+&&
+!disabledPermit;
+
+Payment payment;
+
+payment.calculate(
+    actualSlot->getRate(),
+    duration,
+    res->hasWrongSlot(),
+    disabledViolation,
+    disabledPermit
+    );
+
+cout << "\n===== PAYMENT SUMMARY =====\n";
+
+cout << "Duration: "
+    << duration
+    <<" hour(s)\n";
+
+if (res->hasWrongSlot())
+    cout << "Wrong slot penalty: 5 OMR\n";
+
+if (disabledViolation)
+    cout << "Disabled parking violation: 50 OMR\n";
+
+if (disabledPermit)
+    cout << "Disabled customer: FREE parking\n";
+
+payment.display();
+
+actualSlot->freeSlot();
+
+res->closeReservation();
+
+cout << "Exit gate opened.\n";
+}
 
 
 
