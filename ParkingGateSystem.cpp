@@ -182,3 +182,87 @@ public:
 
         reservationCount++;
         }
+
+void ParkingGateSystem::enterGate() {
+
+    int reservationID =
+customer::readInt(
+"Enter reservation ID: ",
+1,
+1000
+);
+
+Reservation* res = 
+findReservation(reservationID);
+
+if (res == NULL) {
+
+cout << "ERROR: Reservation not found.\n";
+return;
+}
+
+int actualSlot =
+Customer::readInt(
+"Enter actual parked slot: ",
+1,
+6
+);
+
+ParkingSlot* slot =
+slots[actualSlot - 1];
+
+if (slot->isOccupied()) {
+
+cout << "ERROR: Slot already occupied.\n";
+return;
+}
+
+int startHour =
+Customer::readHourWithAmPm(
+"Enter start hour (example 2PM): "
+);
+
+res->setActualSlot(actualSlot);
+
+slot->occupy();
+
+sessions[sessionCount].startSession(
+    resevationID,
+    startHour
+    );
+
+sessionCount++;
+
+cout << "Vehicle entered successfully.\n";
+
+if (res->hasWrongSlot())
+    cout << "Wrong slot violation detected.\n";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
