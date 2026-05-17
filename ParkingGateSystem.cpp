@@ -130,3 +130,55 @@ public:
              << getAvailableCount()
              << endl;
     }
+
+    void reserveSlot() {
+        int customerID = 
+            Customer::readExaxtDigitsInt(
+               "Enter customer ID: ",
+        );
+
+        Customer* customer =
+            findCustomer(customerID);
+
+        if (customer == NULL) {
+            cout<< "ERROR: Customer not found.\n"
+            return;
+
+        int slotNum =
+            Customer::readInt(
+                "Enter slot number: ",
+                1,
+                6
+        );
+
+        ParkingSlot* slot = slots[slotNum - 1];
+
+        if (slot->isReserved() || slot->isOccupied()){
+
+            cout << "ERROR: Slot unavalible.\n";
+            return;
+        }
+
+        if (slot->isDisabledOnly() && !customer->hasDisabledPermit()) {
+
+            cout << "ERROR: Disabled customers only.\n
+            return;
+        }
+
+        reservations[reservationCont] =
+            Resercvation(
+                reservationCount + 1,
+                customerID,
+                slotNum
+            );
+
+        slot->reserve(); 
+
+        cout << "Reservation successful.\n;
+
+        cout << "Reservation ID: "
+             << reservationCount + 1
+             <<endl;
+
+        reservationCount++;
+        }
