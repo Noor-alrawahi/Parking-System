@@ -42,7 +42,7 @@ private:
         return NULL;
     }
 public:
-    ParkingGateSystem() {
+    ParkingGateSystem() {                                                 #constructor
 
         slots.push_back(new SunnySlot(1, false));
         slots.push_back(new SunnySlot(2, false));
