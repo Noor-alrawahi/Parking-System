@@ -84,13 +84,13 @@ public:
         }
 
         int id =
-            customer::readExactDigitsInt(
+            Customer::readExactDigitsInt(
                 "Enter customer ID: ",
                 8
             );
 
         if (findCustomer(id) != NULL){
-            cout << "ERROR: Customer ID already exists.\n"
+            cout << "ERROR: Customer ID already exists.\n";
             return;
       }
 
