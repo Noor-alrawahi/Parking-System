@@ -1,16 +1,23 @@
 // Customer class
 
-#include"Customer.h"
+#include "Customer.h"
 
-int Customer :: totalCustomers = 0;
-Customer:: () {
+int Customer::totalCustomers = 0;
+Customer::Customer() {
 customerID = 0;
 name="";
 phone="";
 plateNumber="";
 disabledPermit= false;
 }
-bool Customer :: isDigitsOnly(string s){
+bool Customer::isDigitChar(char c) {
+return c >='0' && c<='9';
+}
+bool Customer::isLetterChar(char c) {
+return (c >= 'A' && c <= 'Z') ||
+  (c >= 'a' && c <= 'z');
+}
+bool Customer::isDigitsOnly(string s){
   if(s=="")
     return false;
 for(char c : s){
@@ -19,7 +26,7 @@ if(!isDigitChar(c))
 }
 return true;
 }
-int Customer :: stringToInt(string s){
+int Customer::stringToInt(string s){
   int number =0;
 for(char c : s )
   number=number*10+(c-'0');
@@ -32,8 +39,7 @@ if ( s[i]>='a'&& s[i]<='z')
   }
 return s;
 }
-bool Customer :: operator==(const Customer & other)
-const {
+bool Customer::operator==(const Customer & other)const {
   return customerID == other.customerID;
 }
 
