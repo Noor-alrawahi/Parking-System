@@ -1,4 +1,4 @@
-// Customwe class
+// Customer class
 
 #include"Customer.h"
 
