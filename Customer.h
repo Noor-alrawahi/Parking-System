@@ -39,7 +39,7 @@ void setData( int d, string n, string ph, string plate, bool permit);
 int getID()const;
 bool hasDisabledePermit()const;
 static int getTotalCustomers();
-bool operator==(const Customer & other);
+bool operator==(const Customer & other)const;
 
 friend void displayCustomer( const Customer & c);
 };
