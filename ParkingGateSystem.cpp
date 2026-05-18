@@ -98,7 +98,7 @@ public:
 
       string phone = Customer::readPhone();
 
-      string plate = customer::readPlateNumber();
+      string plate = Customer::readPlateNumber();
 
       bool permit = Customer::readDisabledPermit();
 
