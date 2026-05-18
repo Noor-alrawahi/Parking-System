@@ -25,5 +25,12 @@ for(char c : s )
   number=number*10+(c-'0');
 return number;
 }
+string Customer::toUpperText(string s){
+  for(int i=0; i<s.length(); i++){
+if ( s[i]>='a'&& s[i]<='z')
+  s[i] = s[i]-32;
+  }
+return s;
+}
     
 
