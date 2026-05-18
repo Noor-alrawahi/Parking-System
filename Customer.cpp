@@ -32,5 +32,10 @@ if ( s[i]>='a'&& s[i]<='z')
   }
 return s;
 }
+bool Customer :: operator==(const Customer & other)
+const {
+  return customerID == other.customerID;
+}
+
     
 
