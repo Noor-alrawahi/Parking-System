@@ -13,7 +13,7 @@ bool reserved;
 bool disabledOnly;
 
 public:
-ParkingSlot(int num, disabled); //constructor
+ParkingSlot(int num, bool disabled); //constructor
 virtual ~ParkingSlot(); //distructor
 
 int getSlotNumber() const;
@@ -32,59 +32,3 @@ virtual void display() const;
 bool operator==(const ParkingSlot& other);
 
 }; //base class ends
-
-class SunnySlot final : public ParkingSlot{ 
-
-public:  
-SunnySlot(int num, bool disabled);
-
-string getType() const override;
-double getRate() const override;
-
-};
-
-class ShaddedSlot final : public ParkingSlot{
-
-public:
-ShaddedSlot(int num, bool disabled);
-
-string getType() const override;
-double getRate() const override;
-
-};
-
-#endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
