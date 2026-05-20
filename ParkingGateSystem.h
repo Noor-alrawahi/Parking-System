@@ -4,12 +4,11 @@
 #include <vector>
 
 #include "Customer.h"
-#include "ParkingSlot.h"
+#include "SunnySlot.h"
+#include "ShadedSlot.h"
 #include "Reservation.h"
 #include "ParkingSession.h"
 #include "Payment.h"
-
-using namespace std;
 
 const int MAX_CUSTOMERS = 20;
 const int MAX_RESERVATIONS = 20;
@@ -28,14 +27,8 @@ private:
   int sessionCount;
 
   Customer* findCustomer(int id);
-
-  Reservation* findReservation(
-      int reservationID
-  );
-
-  ParkingSession* findSession(
-      int ReservationID
-  );
+  Reservation* findReservation(int reservationID);
+  ParkingSession* findSession(int reservationID);
 
 public:
   ParkingGateSystem();
