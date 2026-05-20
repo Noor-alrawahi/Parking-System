@@ -10,7 +10,7 @@ private:
 public:
   Payment();
 
-  void calculate( double rate, int duration, bool wrongSlot, bool disabledViolation, bool disabledPermit);
+  void calculate( double rate, double duration, bool wrongSlot, bool disabledViolation, bool disabledPermit);
   void display() const;
 };
 
