@@ -5,12 +5,15 @@ Payment::Payment() {
    amount=0;
 }
 
-void Payment::calculate( double rate, int duration, bool wrongSlot, bool disabledViolation, bool disabledPermit){
+void Payment::calculate( double rate, double duration, bool wrongSlot, bool disabledViolation, bool disabledPermit){
    if (disabledPermit){
      amount=0;
      return ;
    }
-   amount= rate* duration;
+
+   double ratePerMinute=rate/60.0;
+   
+   amount= ratePerMinute* duration;
 
    if (wrongSlot)
      amount+=5;
