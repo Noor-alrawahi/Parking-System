@@ -5,18 +5,18 @@
 class ParkingSession{
  private:
   int reservationID;
-  int startHour;
-  int endHour;
+  double startMinutes;
+  double endMinutes;
   bool occupied;
 
 public:
    ParkingSession();
 
-   void startSession( int resID, int start );
-   void endSession(int end);
+   void startSession( int resID, double start );
+   void endSession(double end);
    int getReservationID() const;
    bool isOccupied() const;
-   int getDuration() const;
+   double getDuration() const;
 };
 
 #endif
