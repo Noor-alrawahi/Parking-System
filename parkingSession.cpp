@@ -5,19 +5,19 @@
 ParkingSession::ParkingSession(){
 
    reservationID=0;
-   startHour=0;
-   endHour=0;
+   startMinutes=0.0;
+   endMinutes=0.0;
    occupied=false;
 }
 
-void ParkingSession::startSession( int resID, int start){
+void ParkingSession::startSession( int resID, double start){
     reservationID=resID;
-    startHour=start;
+    startMinutes=start;
     occupied=true;
 }
 
-void ParkingSession::endSession(int end){
-  endHour=end;
+void ParkingSession::endSession(double end){
+  endMinutes=end;
   occupied=false;
 }
 
@@ -29,10 +29,11 @@ bool ParkingSession::isOccupied() const{
   return occupied;
 }
 
-int ParkingSession::getDuration() const {
-  int duration=endHour-startHour;
+double ParkingSession::getDuration() const {
+  double minutesInDay=24.0*60.0; 
+  double duration=endMinutes-startMinutes;
 
   if (duration<=0)
-    duration+=24;
+    duration +=  minutesInDay;
   return duration;
 }
