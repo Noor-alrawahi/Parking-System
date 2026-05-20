@@ -8,7 +8,6 @@ reserved=false;
 disabledOnly=disabled;
 }
 
-//destructor
 ParkingSlot::~ParkingSlot() {}
 
 
@@ -50,21 +49,3 @@ cout<<endl;
 bool ParkingSlot::operator==(const ParkingSlot& other){
   return slotNumber==other.slotNumber;
 }
-
-//sunny class
-SunnySlot::SunnySlot(int num, bool disabled): ParkingSlot(num, disabled) {}
-
-string SunnySlot::getType() const{
-  return "Sunny Slot";  }
-
-double SunnySlot::getRate() const{
-  return 1;  }
-
-//shadded class
-ShaddedSlot::ShaddedSlot(int num, bool disabled): ParkingSlot(num, disabled) {}
-
-string ShaddedSlot::getType() const{
-  return "Shadded Slot";  }
-
-double ShaddedSlot::getRate() const{
-  return 2;  }
