@@ -10,6 +10,8 @@
 #include "ParkingSession.h"
 #include "Payment.h"
 
+using namespace std;
+
 const int MAX_CUSTOMERS = 20;
 const int MAX_RESERVATIONS = 20;
 const int MAX_SESSIONS = 20;
@@ -32,21 +34,15 @@ private:
 
 public:
   ParkingGateSystem();
-
   ~ParkingGateSystem();
 
   int getOccupiedCount() const;
-
   int getAvailableCount() const;
 
   void registerCustomer();
-
   void showSlots();
-
   void reserveSlot();
-
   void enterGate();
-
   void exitGate();
 };
 
