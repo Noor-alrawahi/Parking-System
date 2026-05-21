@@ -1,48 +1,12 @@
-class ParkingGateSystem{
-private:
-    vector<ParkingSlot*>slots;
+using namespace std;
+static double getOmanTimeMinutes(){
+    time_t now =time(0);
+    now += 4 * 3600;
+    tm* t = gmtime(&now);
+    return t ->tm_hour * 60 t->tm_min;
+}
 
-    Customer customers[MAX_CUSTOMERS];
-    Reservation resevations[MAX_RESERVATIONS];
-    ParkingSession sessions[MAX_SESSIONS];
-
-    int customerCount;
-    int reservationCout;
-    int sessionCount;
-
-
-    Cusomer* findCustomer(int id){
-        for (int i = 0; i < customerCount; i++){
-          if (customers[i].getID() ==id)
-            return &customers[i];
-        }
-      
-        return NULL;
-    }
-
-
-    Reservation* findReservation(int reservationID){
-        for (int i = 0; i < reservationCount; i++){
-          if (reservation[i].isActive() &&
-              reservation[i].getReservationID() == reservationID)
-              return &reservation[i];
-        }
-      
-        return NULL;
-    }
-
-
-    ParkingSession* findSession(int reservationID) {
-        for (int i = 0; i < sessionCount; i++) {
-          if (sessions[i].isOccupied() &&
-              sessions[i].getReservationID() == reservationID)
-              return &sessions[i];
-        }
-
-        return NULL;
-    }
-public:
-    ParkingGateSystem() {                                                 #constructor
+ParkingGateSystem::ParkingGateSystem() {                                                 #constructor
 
         slots.push_back(new SunnySlot(1, false));
         slots.push_back(new SunnySlot(2, false));
@@ -56,14 +20,38 @@ public:
         sessionCount = 0;
     }
 
-    ~ParkingGateSystem() {
+ParkingGateSystem::~ParkingGateSystem() {
         for (ParkingSlot* s : slots)
           delete s;
     }
 
-    int getOccupiedCount() const {
-        int count = 0;
+Customer* ParkingGateSystem::findCustomer(int id) {
+    for (int i = 0; i < customerCount; i++){
+        if (customers[i].getID() == id)
+            return &customers[i];
+    }
+    return NULL;
+}
 
+Reservation* ParkingGateSystem::findReservation(int reservation) {
+    for (int i = 0; i < reservationCount; i++) {
+        if (reservation[i].isActive() && reservations[i].getReservationID() == reservationID)
+            return &reservations[i];
+    }
+    return NULL;
+}
+
+ParkingSession* ParkingGateSystem::findSession(int reservationID) {
+    for (int i = 0; i < sessionCount; i++) {
+        if (session[i].isOccupied() && session[i].getOccupiedID() == reservationID)
+            return &sessions[i];
+    }
+    return NULL;
+}
+
+
+int ParkingGateSystem::getOccupiedCount() const {
+        int count = 0;
         for (ParkingSlot* s : slots){
             if (s->isOccupied())
                 count++;
@@ -72,22 +60,17 @@ public:
         return count;
     }
 
-    int getAvailableCount() const {
+int ParkingGateSystem::getAvailableCount() const {
       return slots.size() - getOccupiedCount();
     }
 
-    void registerCustomer() {
-
+void ParkingGateSystem::registerCustomer() {
         if (customerCount >= MAX_CUSTOMERS) {
             cout << "ERROR: Customer list is full.\n";
             return;
         }
 
-        int id =
-            Customer::readExactDigitsInt(
-                "Enter customer ID: ",
-                8
-            );
+        int id = Customer::readExactDigitsInt("Enter customer ID: ", 8);
 
         if (findCustomer(id) != NULL){
             cout << "ERROR: Customer ID already exists.\n";
@@ -115,42 +98,25 @@ public:
       cout<<"Customer registered successfully.\n";
     }
 
-    void showSlots() {
-
+void ParkingGateSystem::showSlots() {
         count << "\n==== PRKING SLOTS =====\n";
-
         for (ParkingSlot* s : slots)
             s->display();
 
-        cout << "\nOccupied Slots: "
-             << getOccupiedCount()
-             << endl;
+        cout << "\nOccupied Slots: "<< getOccupiedCount()<< endl;
 
-        cout << "Available Slots: "
-             << getAvailableCount()
-             << endl;
+        cout << "Available Slots: "<< getAvailableCount()<< endl;
     }
 
-    void reserveSlot() {
-        int customerID = 
-            Customer::readExaxtDigitsInt(
-               "Enter customer ID: ",
-        );
+void ParkingGateSystem::reserveSlot() {
+        int customerID = Customer::readExaxtDigitsInt("Enter customer ID: ", 8 );
 
-        Customer* customer =
-            findCustomer(customerID);
-
+        Customer* customer = findCustomer(customerID);
         if (customer == NULL) {
             cout<< "ERROR: Customer not found.\n"
             return;
 
-        int slotNum =
-            Customer::readInt(
-                "Enter slot number: ",
-                1,
-                6
-        );
-
+        int slotNum = Customer::readInt("Enter slot number: ", 1, 6);
         ParkingSlot* slot = slots[slotNum - 1];
 
         if (slot->isReserved() || slot->isOccupied()){
@@ -166,192 +132,105 @@ public:
         }
 
         reservations[reservationCont] =
-            Resercvation(
-                reservationCount + 1,
-                customerID,
-                slotNum
-            );
+            Resercvation(reservationCount + 1, customerID, slotNum );
 
         slot->reserve(); 
 
         cout << "Reservation successful.\n;
-
-        cout << "Reservation ID: "
-             << reservationCount + 1
-             <<endl;
+        cout << "Reservation ID: " << reservationCount + 1 <<endl;
 
         reservationCount++;
         }
 
 void ParkingGateSystem::enterGate() {
 
-    int reservationID =
-customer::readInt(
-"Enter reservation ID: ",
-1,
-1000
-);
+    int reservationID = customer::readInt("Enter reservation ID: ", 1, 1000 );
 
-Reservation* res = 
-findReservation(reservationID);
-
-if (res == NULL) {
-
-cout << "ERROR: Reservation not found.\n";
-return;
+    Reservation* res = findReservation(reservationID);
+    if (res == NULL) {
+        cout << "ERROR: Reservation not found.\n";
+        return;
 }
 
-int actualSlot =
-Customer::readInt(
-"Enter actual parked slot: ",
-1,
-6
-);
+    int actualSlot = Customer::readInt("Enter actual parked slot: ", 1, 6 );
+    ParkingSlot* slot = slots[actualSlot - 1];
 
-ParkingSlot* slot =
-slots[actualSlot - 1];
-
-if (slot->isOccupied()) {
-
-cout << "ERROR: Slot already occupied.\n";
-return;
+    if (slot->isOccupied()) {
+        cout << "ERROR: Slot already occupied.\n";
+        return;
 }
+    double startMinutes = getOmanTimeMinutes();
+    res->setActualSlot(actualSlot);
+    slot->occupy();
 
-int startHour =
-Customer::readHourWithAmPm(
-"Enter start hour (example 2PM): "
-);
+    sessions[sessionCount].startSession(resevationID, startMinutes );
+    sessionCount++;
 
-res->setActualSlot(actualSlot);
-
-slot->occupy();
-
-sessions[sessionCount].startSession(
-    resevationID,
-    startHour
-    );
-
-sessionCount++;
-
-cout << "Vehicle entered successfully.\n";
-
-if (res->hasWrongSlot())
+    cout << "Vehicle entered successfully.\n";
+    cout << "Every time recorded automatically (Oman time ). \n;
+        
+    if (res->hasWrongSlot())
     cout << "Wrong slot violation detected.\n";
 }
 
 void ParkingGateSystem::exitGate() {
+    int reservationID = Customer::readInt("Enter reservation ID: ", 1, 1000 );
 
-    int reservationID =
-Customer::readInt(
-"Enter reservation ID: ",
-1,
-1000
-);
-
-Reservation* res =
-findReservation(reservationID);
-
-if (res == NULL) {
-
-cout << "ERROR: Reservation not found.\n";
-return;
+    Reservation* res = findReservation(reservationID);
+    if (res == NULL) {
+        cout << "ERROR: Reservation not found.\n";
+        return;
 }
 
-ParkingSession* session =
-findSession(reservationID);
-
-if (session == NULL) {
-
-cout << "ERROR: No active session found.\n";
-return;
+    ParkingSession* session = findSession(reservationID);
+    if (session == NULL) {
+        cout << "ERROR: No active session found.\n";
+        return;
 }
 
-int endHour = 
-Customer::readHourWithAmPm(
-"Enter exit hour (example 4PM): "
-);
+    double endMinutes = getOmanMinutes();;
 
-session->endSession(endHour);
+    session->endSession(endMinutes);
 
-int duration =
-session->getDuration();
+    double duration = session->getDuration();
 
-int actualSlotNumber = 
-res->getActualSlot();
+    int actualSlotNumber = res->getActualSlot();
 
-ParkingSlot* actualSlot =
-slots[actualSlotNumber - 1];
+    ParkingSlot* actualSlot = slots[actualSlotNumber - 1];
 
-Customer* customer =
-findCustomer)
-res->getCustomerID()
+    Customer* customer = findCustomer( res->getCustomerID() );
+ 
+    bool disabledPermit = customer->hasDisabledPermit();
+
+    bool disabledViolation = actualSlot->isDisabledOnly() && !disabledPermit;
+
+
+    Payment payment;
+    payment.calculate(
+        actualSlot->getRate(),
+        duration,
+        res->hasWrongSlot(),
+        disabledViolation,
+        disabledPermit
     );
 
-bool disabledPermit =
-customer->hasDisabledPermit();
+    cout << "\n===== PAYMENT SUMMARY =====\n";
+    cout << "Duration: " << duration <<" minutes(s)\n";
 
-bool disabledViolation =
-actualSlot->isDisabledOnly()
-&&
-!disabledPermit;
+    if (res->hasWrongSlot())
+        cout << "Wrong slot penalty: 5 OMR\n";
 
-Payment payment;
+    if (disabledViolation)
+        cout << "Disabled parking violation: 50 OMR\n";
 
-payment.calculate(
-    actualSlot->getRate(),
-    duration,
-    res->hasWrongSlot(),
-    disabledViolation,
-    disabledPermit
-    );
+    if (disabledPermit)
+        cout << "Disabled customer: FREE parking\n";
 
-cout << "\n===== PAYMENT SUMMARY =====\n";
+    
+    payment.display();
+    
+    actualSlot->freeSlot();
+    res->closeReservation();
 
-cout << "Duration: "
-    << duration
-    <<" hour(s)\n";
-
-if (res->hasWrongSlot())
-    cout << "Wrong slot penalty: 5 OMR\n";
-
-if (disabledViolation)
-    cout << "Disabled parking violation: 50 OMR\n";
-
-if (disabledPermit)
-    cout << "Disabled customer: FREE parking\n";
-
-payment.display();
-
-actualSlot->freeSlot();
-
-res->closeReservation();
-
-cout << "Exit gate opened.\n";
+    cout << "Exit gate opened.\n";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
