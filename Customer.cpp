@@ -153,6 +153,72 @@ ampm = rest.substr(i);
 break;
 }
 }
+if (hourStr == ""){
+cout<<"ERROR: Hour cannot be empty.\n";
+continue;
+}
+bool hourValid=true;
+for(char c : hourStr){
+if(!isDigitChar(c)){
+hourValid = false;
+break;
+}
+}
+if(!hourValid){
+cout<<"ERROR: Hour must be a number.\n";
+continue;
+}
+if(minStr == ""){
+cout<<"ERROR: Minutes cannot be empty.\n";
+continue;
+}
+if(minStr.length() !=2){
+cout<<"ERROR: Minutes must be exactly 2 digits (e.g. 4:05 not 4:5).\n"
+  continue;
+}
+if (ampm!= "AM" && ampm != "PM") {
+cout<<"ERROR: Time must end with AM or PM.\n";
+continue;
+}
+int hour =0;
+for(char c : hourStr)
+  hour=hour*10+(c-'0');
+int minutes = 0;
+  for(char c : minStr)
+    minutes = minutes*10 +(c-'0');
+if(hour < 1 || hour > 12) {
+cout <<"ERROR: Hour minutes be between 1 and 12.\n";
+continue;
+}
+if (minutes>59){
+  cout<<"ERROR: Minutes must be between 00 and  59.\n";
+continue;
+}
+int hour24= convertTo24Hour(hour, ampm);
+    return(double)(hour24*60+minutes);
+}
+}
+void Customer::setData(int id, string n, string ph, string plate, bool permit){
+customerID = id;
+name = n;
+phone = ph;
+plateNumber = plate;
+disabledPermit = permit;
+totalCustomers++;
+}
+int Customer::getID() const{
+  return customerID;
+}
+bool Customer::operator==(const Customer & other){
+return customerID==other.customerID;
+}
+void displayCustomer(const Customer & c){
+  cout<<"\nCustomer Information\n";
+cout<<"ID:"<<c.customerID<<endl;
+cout<<"Name:"<<c.name<<endl;
+cout<<"Phone:"<<c.phone<<endl;
+}
+
 
 
 
