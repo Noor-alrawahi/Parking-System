@@ -108,7 +108,7 @@ cout<<"ERROR: Please enter numbers only.\n";
 continue;
 }
 if((int)input.length()!=digits){
-cout<<"ERROR:ID must be exactly "
+cout<<"ERROR: ID must be exactly "
   <<digits<<" digits.\n";
 continue;
 }
@@ -149,7 +149,7 @@ string Customer::readPhone(){
       continue;
     }
     if(phone.length() !=8){
-      cout<<"ERROR: phone must be exactly 8 digits.\n";
+      cout<<"ERROR: Phone must be exactly 8 digits.\n";
       continue;
     }
     if(phone[0] !='9' && phone[0] !='7'){
@@ -258,7 +258,7 @@ while(true){
     <<" (current Oman time is "
     <<getCurrentTimeString()
     <<") "
-    <<"(e.g. 4:30PM or 4:30PM): ";
+    <<"(e.g. 4:30PM or 4:30 PM): ";
     getline(cin, input);
 
   if(input==""){
