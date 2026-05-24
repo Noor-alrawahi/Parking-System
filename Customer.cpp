@@ -62,7 +62,7 @@ result+=(char)(hour12+'0');
 result+=':';
 result+=(char)(mins/10+'0');
 result+=(char)(mins%10+'0');
-result+='';
+result+=' ';
 result+=ampm;
 
 return result;
@@ -89,7 +89,9 @@ continue;
 }
 value = stringToInt(input);
 if(value<minValue||value>maxValue){
-cout<<"ERROR : Number must be between "<<minValue<<"and"<<maxValue<<".\n";
+cout<<"ERROR : Number must be between "
+  <<minValue<<" and "
+  <<maxValue<<".\n";
 continue;
 }
 return value;
@@ -115,7 +117,7 @@ return stringToInt(input);
 string Customer::readName(){
   string name;
 while(true){
-cout<<"Enter name:";
+cout<<"Enter name: ";
 getline(cin, name);
 
 if(name==""){
@@ -124,7 +126,7 @@ continue;
 }
   bool valid = true;
   for(char c: name){
-    if(!isLetterChar(c) && c!=''){
+    if(!isLetterChar(c) && c!=' '){
       valid=false;
       break;
     }
@@ -141,7 +143,7 @@ string Customer::readPhone(){
   while(true){
     cout<<"Enter phone number: ";
     getline(cin, phone);
-    if(!isDigitOnly(phone)){
+    if(!isDigitsOnly(phone)){
       cout<<"ERROR: phone must contain numbers only.\n";
       continue;
     }
@@ -168,10 +170,10 @@ string Customer::readPlateNumber(){
     }
 
     int letters=0, digits=0;
-    bool inavlid=false;
+    bool inavlid = false;
     for(char c : plate){
       if(isLetterChar(c))  letters++;
-      elseif(isDigitChar(c)) digits++;
+      else if(isDigitChar(c)) digits++;
       else{ invalid=true; break;}
     }
     if(invalid){
@@ -220,7 +222,7 @@ bool Customer::readDisabledPermit(){
   bool hasPermit = readYesNo("Does customer have disabled permit? (y/n): ");
   if(!hasPermit)
     return false;
-  string Permit;
+  string permit;
 
   while(true){
     cout<<"Enter disabled permit number: ";
@@ -267,7 +269,7 @@ while(true){
     
 string clean = "";
 for(char c:input){
-  if(c!=''){
+  if(c!=' '){
   if(c>='a'&& c<='z')
   clean+=(char)(c-32);
   else
@@ -282,7 +284,7 @@ break;
 }
 }
 if(colonPos ==-1){
-cout<<'Error:Missing colon.Use H:MM format (e.g. 4:30 PM).\n";
+cout<<"Error:Missing colon.Use H:MM format (e.g. 4:30 PM).\n";
 continue;
 }
 string hourStr=clean.substr(0,colonPos);
@@ -317,7 +319,7 @@ cout<<"ERROR: Minutes cannot be empty.\n";
 continue;
 }
 if(minStr.length() !=2){
-cout<<"ERROR: Minutes must be exactly 2 digits (e.g. 4:05 not 4:5).\n"
+cout<<"ERROR: Minutes must be exactly 2 digits (e.g. 4:05 not 4:5).\n";
   continue;
 }
 if (ampm!= "AM" && ampm != "PM") {
@@ -334,7 +336,7 @@ int minutes = 0;
     minutes = minutes*10 +(c-'0');
   
 if(hour < 1 || hour > 12) {
-cout <<"ERROR: Hour minutes be between 1 and 12.\n";
+cout <<"ERROR: Hour must be between 1 and 12.\n";
 continue;
 }
   
