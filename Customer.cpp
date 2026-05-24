@@ -289,7 +289,7 @@ break;
 }
 }
 if(colonPos ==-1){
-cout<<"Error: Missing colon.Use H:MM format (e.g. 4:30 PM).\n";
+cout<<"ERROR: Missing colon.Use H:MM format (e.g. 4:30 PM).\n";
 continue;
 }
 string hourStr=clean.substr(0,colonPos);
