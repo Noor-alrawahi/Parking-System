@@ -89,7 +89,7 @@ continue;
 }
 value = stringToInt(input);
 if(value<minValue||value>maxValue){
-cout<<"ERROR : Number must be between "
+cout<<"ERROR: Number must be between "
   <<minValue<<" and "
   <<maxValue<<".\n";
 continue;
@@ -166,7 +166,7 @@ string Customer::readPlateNumber(){
     getline(cin, plate);
     
     if(plate==""){
-      cout<<"ERROR: plate number cannot be empty.\n";
+      cout<<"ERROR: Plate number cannot be empty.\n";
       continue;
     }
 
@@ -182,13 +182,13 @@ string Customer::readPlateNumber(){
       continue;
     }
     if(letters<1 || letters >2 ){
-      cout<<"ERROR: plate must contain 1 or 2 letters.\n";
+      cout<<"ERROR: Plate must contain 1 or 2 letters.\n";
       continue;
     }
 
     if ( digits <1 || digits>5){
 
-      cout<<"ERROR: plate must contain maximum 5 digits.\n";
+      cout<<"ERROR: Plate must contain maximum 5 digits.\n";
       continue;
     }
     return plate;
@@ -203,7 +203,7 @@ bool Customer::readYesNo( string message) {
     getline(cin, input);
     if(input=="y" || input=="Y") return true;
     if(input=="n" || input=="N") return false;
-    cout<<"ERROR: please enter y or n only.\n";
+    cout<<"ERROR: Please enter y or n only.\n";
   }
 }
 
@@ -289,7 +289,7 @@ break;
 }
 }
 if(colonPos ==-1){
-cout<<"Error:Missing colon.Use H:MM format (e.g. 4:30 PM).\n";
+cout<<"Error: Missing colon.Use H:MM format (e.g. 4:30 PM).\n";
 continue;
 }
 string hourStr=clean.substr(0,colonPos);
