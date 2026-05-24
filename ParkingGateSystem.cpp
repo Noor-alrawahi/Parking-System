@@ -43,7 +43,7 @@ Reservation* ParkingGateSystem::findReservation(int reservationID) {
 
 ParkingSession* ParkingGateSystem::findSession(int reservationID) {
     for (int i = 0; i < sessionCount; i++) {
-        if (sessions[i].isOccupied() && session[i].getReservationID() == reservationID)
+        if (sessions[i].isOccupied() && sessions[i].getReservationID() == reservationID)
             return &sessions[i];
     }
     return NULL;
@@ -90,7 +90,7 @@ void ParkingGateSystem::registerCustomer() {
           name,
           phone,
           plate,
-          permit,
+          permit
       );
 
       customerCount++;
@@ -115,7 +115,7 @@ void ParkingGateSystem::reserveSlot() {
         if (customer == NULL) {
             cout<< "ERROR: Customer not found.\n";
             return;
-
+        }
         int slotNum = Customer::readInt("Enter slot number: ", 1, 6);
         ParkingSlot* slot = slots[slotNum - 1];
 
