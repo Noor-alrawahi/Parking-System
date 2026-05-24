@@ -3,10 +3,10 @@ static double getOmanTimeMinutes(){
     time_t now =time(0);
     now += 4 * 3600;
     tm* t = gmtime(&now);
-    return t ->tm_hour * 60 t->tm_min;
+    return t ->tm_hour * 60 + t->tm_min;
 }
 
-ParkingGateSystem::ParkingGateSystem() {                                                 #constructor
+ParkingGateSystem::ParkingGateSystem() {                                                 //constructor
 
         slots.push_back(new SunnySlot(1, false));
         slots.push_back(new SunnySlot(2, false));
@@ -16,7 +16,7 @@ ParkingGateSystem::ParkingGateSystem() {                                        
         slots.push_back(new ShadedSlot(6, true));
 
         customerCount = 0;
-        reservationsCount = 0;
+        reservationCount = 0;
         sessionCount = 0;
     }
 
@@ -33,9 +33,9 @@ Customer* ParkingGateSystem::findCustomer(int id) {
     return NULL;
 }
 
-Reservation* ParkingGateSystem::findReservation(int reservation) {
+Reservation* ParkingGateSystem::findReservation(int reservationID) {
     for (int i = 0; i < reservationCount; i++) {
-        if (reservation[i].isActive() && reservations[i].getReservationID() == reservationID)
+        if (reservations[i].isActive() && reservations[i].getReservationID() == reservationID)
             return &reservations[i];
     }
     return NULL;
@@ -43,7 +43,7 @@ Reservation* ParkingGateSystem::findReservation(int reservation) {
 
 ParkingSession* ParkingGateSystem::findSession(int reservationID) {
     for (int i = 0; i < sessionCount; i++) {
-        if (session[i].isOccupied() && session[i].getOccupiedID() == reservationID)
+        if (sessions[i].isOccupied() && session[i].getOccupiedID() == reservationID)
             return &sessions[i];
     }
     return NULL;
