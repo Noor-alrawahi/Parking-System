@@ -108,7 +108,8 @@ cout<<"ERROR: Please enter numbers only.\n";
 continue;
 }
 if((int)input.length()!=digits){
-cout<<"ERROR:ID must be exactly"<<digits<<"digits.\n";
+cout<<"ERROR:ID must be exactly "
+  <<digits<<" digits.\n";
 continue;
 }
 return stringToInt(input);
@@ -144,7 +145,7 @@ string Customer::readPhone(){
     cout<<"Enter phone number: ";
     getline(cin, phone);
     if(!isDigitsOnly(phone)){
-      cout<<"ERROR: phone must contain numbers only.\n";
+      cout<<"ERROR: Phone must contain numbers only.\n";
       continue;
     }
     if(phone.length() !=8){
@@ -170,7 +171,7 @@ string Customer::readPlateNumber(){
     }
 
     int letters=0, digits=0;
-    bool inavlid = false;
+    bool invalid = false;
     for(char c : plate){
       if(isLetterChar(c))  letters++;
       else if(isDigitChar(c)) digits++;
@@ -253,8 +254,12 @@ double Customer::readTimeAsMinutes(string message){
 string input;
 
 while(true){
-  cout<<message<<" (current Oman time is "<<getCurrentTimeString()<<")"<<"(e.g. 4:30PM or 4:30PM):";
-  getline(cin, input);
+  cout<<message
+    <<" (current Oman time is "
+    <<getCurrentTimeString()
+    <<") "
+    <<"(e.g. 4:30PM or 4:30PM): ";
+    getline(cin, input);
 
   if(input==""){
     cout<<"ERROR: Time cannot be empty.\n";
