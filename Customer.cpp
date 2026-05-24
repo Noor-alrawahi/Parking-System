@@ -204,14 +204,71 @@ bool Customer::readYesNo( string message) {
   }
 }
 
+bool Customer::isValidPermit(string permit){
+  permit = toUpperText(permit);
+  string validPermits[4] = {
+  "DP1001","DP1002","DP1003","DP2026" 
+};
+
+  for(int i=0; i< 4; i++){
+    if(permit == validPermits[i])
+      return true;
+  }
+  return false;
+}
+bool Customer::readDisabledPermit(){
+  bool hasPermit = readYesNo("Does customer have disabled permit? (y/n): ");
+  if(!hasPermit)
+    return false;
+  string Permit;
+
+  while(true){
+    cout<<"Enter disabled permit number: ";
+    getline(cin, permit);
+
+    if(permit==""){
+      cout<<"ERROR: Permit number cannot be empty.\n";
+      continue;
+    }
+    if(isValidPermit(permit)){
+      cout<<"Permit verified successfully.\n";
+      return true;
+    }
+    cout<<"ERROR: Invalid permit number.\n";
+  }
+}
+
+int Customer::convertTo24Hour(int hour, string ampm){
+  if(ampm=="AM"){
+    if(hour==12) return 0;
+    return hour;
+  }
+  if (hour==12) return 12; 
+  return hour +12;
+}
+
+double Customer::readTimeAsMinutes(string message){
+string input;
+
+while(true){
+  cout<<message<<" (current Oman time is "<<getCurrentTimeString()<<")"<<"(e.g. 4:30PM or 4:30PM):";
+  getline(cin, input);
+
+  if(input==""){
+    cout<<"ERROR: Time cannot be empty.\n";
+    continue;
+  }
+  
+
+
         
 
     
     
 string clean = "";
-for(charc:input){
+for(char c:input){
   if(c!=''){
-  if(c>='a'&& c<='Z')
+  if(c>='a'&& c<='z')
   clean+=(char)(c-32);
   else
   clean+=c;
@@ -236,7 +293,7 @@ for(int i =0; i<(int)rest.length(); i++) {
 if(isDigitChar(rest[i]))
   minStr+= rest[i];
 else{
-ampm = rest.substr(i);
+ampm =rest.substr(i);
 break;
 }
 }
@@ -267,24 +324,30 @@ if (ampm!= "AM" && ampm != "PM") {
 cout<<"ERROR: Time must end with AM or PM.\n";
 continue;
 }
+  
 int hour =0;
 for(char c : hourStr)
   hour=hour*10+(c-'0');
+  
 int minutes = 0;
   for(char c : minStr)
     minutes = minutes*10 +(c-'0');
+  
 if(hour < 1 || hour > 12) {
 cout <<"ERROR: Hour minutes be between 1 and 12.\n";
 continue;
 }
+  
 if (minutes>59){
   cout<<"ERROR: Minutes must be between 00 and  59.\n";
 continue;
 }
+  
 int hour24= convertTo24Hour(hour, ampm);
     return(double)(hour24*60+minutes);
 }
 }
+
 void Customer::setData(int id, string n, string ph, string plate, bool permit){
 customerID = id;
 name = n;
@@ -293,9 +356,14 @@ plateNumber = plate;
 disabledPermit = permit;
 totalCustomers++;
 }
-int Customer::getID() const{
-  return customerID;
-}
+
+int Customer::getID() const
+{return customerID;}
+bool Customer::hasDisabledPermit()
+const{ return disabledPermit;}
+int Customer::getTotalCustomers()
+{ return totalCustomers;}
+
 bool Customer::operator==(const Customer & other){
 return customerID==other.customerID;
 }
