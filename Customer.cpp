@@ -27,7 +27,7 @@ for(char c : s )
 return number;
 }
 string Customer::toUpperText(string s){
-  for(int i=0; i<s.length(); i++){
+  for(int i=0; i<(int)s.length(); i++){
 if ( s[i]>='a'&& s[i]<='z')
   s[i] = s[i]-32;
   }
@@ -42,6 +42,7 @@ int mins = t->tm_min;
 
 string ampm = "AM";
 int hour12 = hour24;
+  
 if(hour24==0)
   hour12=12;
 else if (hour24==12)
@@ -83,7 +84,7 @@ cout<<message;
 getline(cin, input);
 
 if(!isDigitsOnly(input)){
-cout<<"ERROR: Please enter number only.\n";
+cout<<"ERROR: Please enter numbers only.\n";
 continue;
 }
 value = stringToInt(input);
@@ -104,7 +105,7 @@ if(!isDigitsOnly(input)){
 cout<<"ERROR: Please enter numbers only.\n";
 continue;
 }
-if(input.length()!=digits){
+if((int)input.length()!=digits){
 cout<<"ERROR:ID must be exactly"<<digits<<"digits.\n";
 continue;
 }
@@ -121,6 +122,92 @@ if(name==""){
 cout<<"ERROR: Name cannot be empty.\n";
 continue;
 }
+  bool valid = true;
+  for(char c: name){
+    if(!isLetterChar(c) && c!=''){
+      valid=false;
+      break;
+    }
+  }
+  if (!valid){
+    cout<<"ERROR: Name must contain letters only.\n";
+    continue;
+  }
+  return name;
+}
+}
+string Customer::readPhone(){
+  string phone;
+  while(true){
+    cout<<"Enter phone number: ";
+    getline(cin, phone);
+    if(!isDigitOnly(phone)){
+      cout<<"ERROR: phone must contain numbers only.\n";
+      continue;
+    }
+    if(phone.length() !=8){
+      cout<<"ERROR: phone must be exactly 8 digits.\n";
+      continue;
+    }
+    if(phone[0] !='9' && phone[0] !='7'){
+      cout<<"ERROR: Oman numbers start with 9 or 7.\n";
+      continue;
+    }
+    return phone;
+  }
+}
+string Customer::readPlateNumber(){
+  string plate;
+  while(true){
+    cout<<"Enter vehicle plate number: ";
+    getline(cin, plate);
+    
+    if(plate==""){
+      cout<<"ERROR: plate number cannot be empty.\n";
+      continue;
+    }
+
+    int letters=0, digits=0;
+    bool inavlid=false;
+    for(char c : plate){
+      if(isLetterChar(c))  letters++;
+      elseif(isDigitChar(c)) digits++;
+      else{ invalid=true; break;}
+    }
+    if(invalid){
+      cout<<"ERROR: Plate must contain letters and numbers only.\n";
+      continue;
+    }
+    if(letters<1 || letters >2 ){
+      cout<<"ERROR: plate must contain 1 or 2 letters.\n";
+      continue;
+    }
+
+    if ( digits <1 || digits>5){
+
+      cout<<"ERROR: plate must contain maximum 5 digits.\n";
+      continue;
+    }
+    return plate;
+
+  }
+}
+
+bool Customer::readYesNo( string message) { 
+  string input;
+  while (true){
+    cout<<message;
+    getline(cin, input);
+    if(input=="y" || input=="Y") return true;
+    if(input=="n" || input=="N") return false;
+    cout<<"ERROR: please enter y or n only.\n";
+  }
+}
+
+        
+
+    
+    
 string clean = "";
 for(charc:input){
   if(c!=''){
