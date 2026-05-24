@@ -289,7 +289,7 @@ break;
 }
 }
 if(colonPos ==-1){
-cout<<"ERROR: Missing colon.Use H:MM format (e.g. 4:30 PM).\n";
+cout<<"ERROR: Missing colon. Use H:MM format (e.g. 4:30PM).\n";
 continue;
 }
 string hourStr=clean.substr(0,colonPos);
@@ -346,7 +346,7 @@ continue;
 }
   
 if (minutes>59){
-  cout<<"ERROR: Minutes must be between 00 and  59.\n";
+  cout<<"ERROR: Minutes must be between 00 and 59.\n";
 continue;
 }
   
@@ -376,7 +376,7 @@ return customerID==other.customerID;
 }
 void displayCustomer(const Customer & c){
   cout<<"\nCustomer Information\n";
-cout<<"ID:"<<c.customerID<<endl;
+cout<<"ID: "<<c.customerID<<endl;
 cout<<"Name:"<<c.name<<endl;
 cout<<"Phone:"<<c.phone<<endl;
 }
