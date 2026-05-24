@@ -377,8 +377,8 @@ return customerID==other.customerID;
 void displayCustomer(const Customer & c){
   cout<<"\nCustomer Information\n";
 cout<<"ID: "<<c.customerID<<endl;
-cout<<"Name:"<<c.name<<endl;
-cout<<"Phone:"<<c.phone<<endl;
+cout<<"Name: "<<c.name<<endl;
+cout<<"Phone: "<<c.phone<<endl;
 }
 
 
