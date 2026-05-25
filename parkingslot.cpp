@@ -1,4 +1,4 @@
-#include "ParkingSlot.h"
+#include "parkingSlot.h"
 
 //constructor
 ParkingSlot::ParkingSlot(int num, bool disabled){
