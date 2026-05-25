@@ -96,12 +96,14 @@ int value;
 while(true){
 cout<<message;
 getline(cin, input);
-
+//validate numeric input
 if(!isDigitsOnly(input)){
 cout<<"ERROR: Please enter numbers only.\n";
 continue;
 }
+  //converts string to integer
 value = stringToInt(input);
+  //validate range
 if(value<minValue||value>maxValue){
 cout<<"ERROR: Number must be between "
   <<minValue<<" and "
@@ -111,16 +113,18 @@ continue;
 return value;
 }
 }
+//read integer with exact digit count
 int Customer::readExactDigitsInt(string message, int digits){
   string input;
 while(true){
 cout<<message;
 getline(cin,input);
-
+//ensures input contains digits only 
 if(!isDigitsOnly(input)){
 cout<<"ERROR: Please enter numbers only.\n";
 continue;
 }
+  //ensure exact length
 if((int)input.length()!=digits){
 cout<<"ERROR: ID must be exactly "
   <<digits<<" digits.\n";
@@ -129,17 +133,20 @@ continue;
 return stringToInt(input);
 }
 }
+//read and validate customer name
 string Customer::readName(){
   string name;
 while(true){
 cout<<"Enter name: ";
 getline(cin, name);
 
+//prevent empty names
 if(name==""){
 cout<<"ERROR: Name cannot be empty.\n";
 continue;
 }
   bool valid = true;
+  //ensure name contains letter and spaces only 
   for(char c: name){
     if(!isLetterChar(c) && c!=' '){
       valid=false;
@@ -153,19 +160,23 @@ continue;
   return name;
 }
 }
+//read and validate oman phone number
 string Customer::readPhone(){
   string phone;
   while(true){
     cout<<"Enter phone number: ";
     getline(cin, phone);
+    //digits only
     if(!isDigitsOnly(phone)){
       cout<<"ERROR: Phone must contain numbers only.\n";
       continue;
     }
+    //Must be exactly 8 digits 
     if(phone.length() !=8){
       cout<<"ERROR: Phone must be exactly 8 digits.\n";
       continue;
     }
+    //oman mobile number starts with 9 or 7
     if(phone[0] !='9' && phone[0] !='7'){
       cout<<"ERROR: Oman numbers start with 9 or 7.\n";
       continue;
@@ -173,12 +184,13 @@ string Customer::readPhone(){
     return phone;
   }
 }
+//read and validate plate number
 string Customer::readPlateNumber(){
   string plate;
   while(true){
     cout<<"Enter vehicle plate number: ";
     getline(cin, plate);
-    
+    //prevent empty plate number
     if(plate==""){
       cout<<"ERROR: Plate number cannot be empty.\n";
       continue;
@@ -186,6 +198,7 @@ string Customer::readPlateNumber(){
 
     int letters=0, digits=0;
     bool invalid = false;
+    //count letters and digits
     for(char c : plate){
       if(isLetterChar(c))  letters++;
       else if(isDigitChar(c)) digits++;
@@ -227,6 +240,7 @@ bool Customer::isValidPermit(string permit){
   "DP1001","DP1002","DP1003","DP2026" 
 };
 
+  //compare entered permit with valid permits
   for(int i=0; i< 4; i++){
     if(permit == validPermits[i])
       return true;
@@ -388,6 +402,7 @@ int Customer::getTotalCustomers()
 bool Customer::operator==(const Customer & other){
 return customerID==other.customerID;
 }
+//display customer information
 void displayCustomer(const Customer & c){
   cout<<"\nCustomer Information\n";
 cout<<"ID: "<<c.customerID<<endl;
