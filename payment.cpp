@@ -12,9 +12,9 @@ Payment::Payment() {
 // Calculates parking payment
 // rate = hourly parking rate
 // duration = parking duration in minutes
-// wrongslot =  parked in wrongslot
+// wrongslot =  customer parked in the wrong slot
 // disabledViolation = used disabled slot illegally
-// disabledPermit = disabled customer free parking
+// disabledPermit = disabled customers receive free parking
 
 void Payment::calculate( double rate, double duration, bool wrongSlot, bool disabledViolation, bool disabledPermit){
 
