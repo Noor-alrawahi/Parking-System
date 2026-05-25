@@ -6,6 +6,7 @@
 #include "Customer.h"
 #include "SunnySlot.h"
 #include "ShadedSlot.h"
+#include "ParkingSlot.h"
 #include "Reservation.h"
 #include "ParkingSession.h"
 #include "Payment.h"
