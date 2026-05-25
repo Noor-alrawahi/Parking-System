@@ -1,3 +1,7 @@
+#include "ParkingGateSystem.h:
+#include <iostrem>
+#include <ctime>
+
 using namespace std;
 static double getOmanTimeMinutes(){
     time_t now =time(0);
@@ -122,7 +126,7 @@ void ParkingGateSystem::reserveSlot() {
         if (slot->isReserved() || slot->isOccupied()){
 
             cout << "ERROR: Slot unavalible.\n";
-            return;}
+            return;
         }
 
         if (slot->isDisabledOnly() && !customer->hasDisabledPermit()) {
@@ -167,7 +171,7 @@ void ParkingGateSystem::enterGate() {
     sessionCount++;
 
     cout << "Vehicle entered successfully.\n";
-    cout << "Every time recorded automatically (Oman time ). \n";
+    cout << "Entry time recorded automatically (Oman time ). \n";
         
     if (res->hasWrongSlot())
     cout << "Wrong slot violation detected.\n";
