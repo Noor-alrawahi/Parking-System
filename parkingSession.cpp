@@ -25,7 +25,7 @@ void ParkingSession::startSession( int resID, double start){
 }
 
 // endSession()
-// Saves exit time and free slots
+// Saves exit time and frees slots
 
 void ParkingSession::endSession(double end){
   endMinutes=end;
@@ -58,7 +58,7 @@ double ParkingSession::getDuration() const {
    // Total minutes in one day 
   double minutesInDay=24.0*60.0; 
 
-   //Calculate duration 
+   // Calculate duration 
   double duration=endMinutes-startMinutes;
 
    // If negative, add one full day 
