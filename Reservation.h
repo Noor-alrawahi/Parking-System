@@ -3,12 +3,12 @@
 
 class Reservation {
 private:
-int reservationID;
-int customerID;
-int reservedSlot;
-int actualSlot;
-bool wrongSlot;
-bool active;
+int reservationID;   //unique reservation ID
+int customerID;      //stores customer ID linked to reservation 
+int reservedSlot;    //slot selected during reservation 
+int actualSlot;      //actual slot used by the customer 
+bool wrongSlot;      //true if customer parked in the wrong slot
+bool active;         //indicates wheather the reservation is active 
 
 public:
 Reservation();
