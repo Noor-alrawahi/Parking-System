@@ -1,10 +1,10 @@
-#ifndef SHADDEDSLOT_H
-#define SHADDEDSLOT_H
+#ifndef SHADEDSLOT_H
+#define SHADEDSLOT_H
 #include "ParkingSlot.h"
 
-class ShaddedSlot final : public ParkingSlot{
+class ShadedSlot final : public ParkingSlot{
 public:
-ShaddedSlot(int num,bool disabled);
+ShadedSlot(int num,bool disabled);
 
 string getType() const override;
 double getRate() const override;
