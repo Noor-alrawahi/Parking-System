@@ -18,11 +18,11 @@ const int MAX_SESSIONS = 20;
 
 class ParkingGateSystem {
 private:
-  vector<ParkingSlot*>slot;
+  vector<ParkingSlot*>slots;
 
   Customer customers[MAX_CUSTOMERS];
   Reservation reservations[MAX_RESERVATIONS];
-  parkingSession sessions[MAX_SESSIONS];
+  ParkingSession sessions[MAX_SESSIONS];
 
   int customerCount;
   int reservationCount;
