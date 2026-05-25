@@ -1,5 +1,5 @@
 // payment class
-#include "Payment.h"
+#include "payment.h"
 
 Payment::Payment() {
    amount=0;
