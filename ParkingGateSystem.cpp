@@ -1,4 +1,4 @@
-#include "ParkingGateSystem.h":
+#include "ParkingGateSystem.h"
 #include <iostraem>
 #include <ctime>
 
