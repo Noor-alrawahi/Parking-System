@@ -4,13 +4,17 @@
 
 int Customer::totalCustomers = 0;
 
+// checks if the character is a digit from 0-9
 bool Customer::isDigitChar(char c) {
 return c >='0' && c<='9';
 }
+//checks if character is an English capital or small letter
 bool Customer::isLetterChar(char c) {
 return (c >= 'A' && c <= 'Z') ||
   (c >= 'a' && c <= 'z');
 }
+
+//checks if string contains digits only
 bool Customer::isDigitsOnly(string s){
   if(s=="")
     return false;
@@ -20,12 +24,16 @@ if(!isDigitChar(c))
 }
 return true;
 }
+
+//convert string to integer
 int Customer::stringToInt(string s){
   int number =0;
 for(char c : s )
   number=number*10+(c-'0');
 return number;
 }
+
+//convert lowercase letters to uppercase
 string Customer::toUpperText(string s){
   for(int i=0; i<(int)s.length(); i++){
 if ( s[i]>='a'&& s[i]<='z')
@@ -33,8 +41,11 @@ if ( s[i]>='a'&& s[i]<='z')
   }
 return s;
 }
+
+//get cuurent oman time as formatted string 
 string Customer::getCurrentTimeString(){
   time_t now = time(0);
+  //add 4 hours for oman timezone 
 now+=4*3600;
 tm*t = gmtime(&now);
 int hour24 = t->tm_hour;
@@ -42,7 +53,7 @@ int mins = t->tm_min;
 
 string ampm = "AM";
 int hour12 = hour24;
-  
+  // convert from 24 hour to 12 hour format
 if(hour24==0)
   hour12=12;
 else if (hour24==12)
@@ -52,6 +63,7 @@ hour12=hour24-12;
 ampm="PM";
 }
 string result="";
+  // add hour digits
 if (hour12>=10){
 result+=(char)(hour12/10+'0');
 result+=(char)(hour12%10+'0');
@@ -59,6 +71,7 @@ result+=(char)(hour12%10+'0');
 else {
 result+=(char)(hour12+'0');
 }
+  //add colon and minutes
 result+=':';
 result+=(char)(mins/10+'0');
 result+=(char)(mins%10+'0');
@@ -75,6 +88,7 @@ phone="";
 plateNumber="";
 disabledPermit=false;
 }
+//read integer with validation and range checking
 int Customer::readInt(string message, int minValue, int maxValue){
 string input;
 int value;
