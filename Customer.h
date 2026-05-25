@@ -7,6 +7,7 @@
 #include <ctime>
 
 using namespace std;
+//customer class to store customer information and validation 
 class Customer {
 private:
 
@@ -14,6 +15,7 @@ int customerID;
 string name;
 string phone;
 string plateNumber;
+//indicates if customer has disabled permit
 bool disabledPermit;
 static int totalCustomers;
 static bool isDigitChar(char c);
