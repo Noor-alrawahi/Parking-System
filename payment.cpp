@@ -1,6 +1,6 @@
 // Payment.cpp
 
-#include "payment.h"
+#include "Payment.h"
 
 // Constructor that initializes the amount to zero 
 
