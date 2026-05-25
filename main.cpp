@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 
-  // Creates parking system object
+  // Create the main parking system controller
   ParkingGateSystem system;
 
  int choice;
@@ -24,7 +24,7 @@ int main() {
    cout<<"5. Exit Gate and Pay\n";
    cout<<"0. Exit Program\n";
 
-   // Read user menu choice 
+   // Read  and validate user menu choice(input) 
    choice=
      Customer::readInt( "Enter choice: ", 0,5 );
 
