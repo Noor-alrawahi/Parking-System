@@ -6,7 +6,7 @@
 #include "Customer.h"                    // header files for all class used in the system
 #include "SunnySlot.h"
 #include "ShadedSlot.h"
-#include "ParkingSlot.h"
+#include "Parkingslot.h"
 #include "Reservation.h"
 #include "ParkingSession.h"
 #include "Payment.h"
