@@ -36,6 +36,10 @@ int Reservation::getActualSlot() const {
   return actualSlot;
 }
 
+int Reservation::getReservedSlot() const {
+return reservedSlot;
+}
+
 bool Reservation::hasWrongSlot() const {
   return wrongSlot;
 }
