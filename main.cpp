@@ -1,5 +1,8 @@
 #include "ParkingGateSystem.h"
 #include "Customer.h"
+#include<iostream>
+using namespace std;
+
 int main() {
 
   ParkingGateSystem system;
@@ -7,13 +10,13 @@ int main() {
  int choice;
  do {
 
-   cout<< "\n ====== SMART PARKING GATE SYSTEM ====== \n";
+   cout<< "\n====== SMART PARKING GATE SYSTEM ======\n";
 
    cout<<"1. Register Customer\n";
    cout<<"2. Show Parking Slots\n";
-   cout<<"3. Reserve Slots\n";
-   cout<<"4. Enter Gate\n";
-   cout<<"5. Exit Gate \n";
+   cout<<"3. Reserve Slot\n";
+   cout<<"4. Enter Gate and Park\n";
+   cout<<"5. Exit Gate and Pay\n";
    cout<<"0. Exit Program\n";
 
    choice=
@@ -30,7 +33,7 @@ int main() {
    else if (choice==5 )
      system.exitGate();
    else if ( choice ==0)
-     cout<<" Program ended.\n";
+     cout<<"Program ended.\n";
  } while (choice!=0);
 
 return 0;
