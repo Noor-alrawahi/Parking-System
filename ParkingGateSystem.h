@@ -21,7 +21,7 @@ class ParkingGateSystem {                                // main class that mana
 private:
   vector<ParkingSlot*>slots;                             // vector to store all parking slot objects
 
-  Customer customers[MAX_CUSTOMERS];                     // arrays to store info
+  Customer customers[MAX_CUSTOMERS];                     // arrays to store info (compositions)
   Reservation reservations[MAX_RESERVATIONS];
   ParkingSession sessions[MAX_SESSIONS];
 
