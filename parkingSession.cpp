@@ -1,6 +1,6 @@
 // parkingSession.cpp
 
-#include "ParkingSession.h"
+#include "parkingSession.h"
 
 // Constructor
 // Initializes default values
