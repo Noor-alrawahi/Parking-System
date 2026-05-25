@@ -1,6 +1,6 @@
 #ifndef SUNNYSLOT_H
 #define SUNNYSLOT_H
-#include "ParkingSlot.h"
+#include "parkingSlot.h"
 
 class SunnySlot final : public ParkingSlot{
 public:
