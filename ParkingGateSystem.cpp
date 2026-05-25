@@ -10,7 +10,7 @@ static double getOmanTimeMinutes(){                         //to get current oma
     return t ->tm_hour * 60 + t->tm_min;
 }
 
-ParkingGateSystem::ParkingGateSystem() {                                                 //constructor
+ParkingGateSystem::ParkingGateSystem() {                                                 //composition
 
         slots.push_back(new SunnySlot(1, false));                    // sunny slots
         slots.push_back(new SunnySlot(2, false));
