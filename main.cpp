@@ -3,15 +3,20 @@
 #include<iostream>
 using namespace std;
 
+// Main function
+// Displays system menu and handles user choices
+
 int main() {
 
+  // Creates parking system object
   ParkingGateSystem system;
 
  int choice;
  do {
 
+   // Display main menu
    cout<< "\n====== SMART PARKING GATE SYSTEM ======\n";
-
+  
    cout<<"1. Register Customer\n";
    cout<<"2. Show Parking Slots\n";
    cout<<"3. Reserve Slot\n";
@@ -19,6 +24,7 @@ int main() {
    cout<<"5. Exit Gate and Pay\n";
    cout<<"0. Exit Program\n";
 
+   // Read user menu choice 
    choice=
      Customer::readInt( "Enter choice: ", 0,5 );
 
