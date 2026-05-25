@@ -1,6 +1,6 @@
 #include "Reservation.h"
 
-Reservation::Reservation() {
+Reservation::Reservation() {   //default constructor initializes empty reservation 
 
 reservationID = 0;
 customerID = 0;
@@ -10,7 +10,7 @@ wrongSlot = false;
 active = false;
 }
 
-Reservation::Reservation(
+Reservation::Reservation(     //parameterized constructor initializes reservation data
 int resID,
 int custID,
 int slot
@@ -48,7 +48,7 @@ bool Reservation::isActive() const {
   return active;
 }
 
-void Reservation::setActualSlot(int slot) {
+void Reservation::setActualSlot(int slot) {       //saves actual parked slot and checks violations
 
   actualSlot = slot;
 
@@ -57,7 +57,7 @@ if (actualSlot != reservedSlot)
 
 }
 
-void Reservation::closeReservation() {
+void Reservation::closeReservation() {           //marks reservation as closed 
   active = false;
 }
 
