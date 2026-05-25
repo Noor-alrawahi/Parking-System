@@ -1,4 +1,5 @@
-#include " ParkingGateSystem.h"
+#include "ParkingGateSystem.h"
+#include "Customer.h"
 int main() {
 
   ParkingGateSystem system;
@@ -6,7 +7,7 @@ int main() {
  int choice;
  do {
 
-   cout<< "\n ====== SMAT PARKING GATE SYSTEM ====== \n";
+   cout<< "\n ====== SMART PARKING GATE SYSTEM ====== \n";
 
    cout<<"1. Register Customer\n";
    cout<<"2. Show Parking Slots\n";
@@ -19,7 +20,7 @@ int main() {
      Customer::readInt( "Enter choice: ", 0,5 );
 
    if ( choice == 1)
-        system.regesterCustomer();
+        system.registerCustomer();
    else if ( choice == 2)
        system.showSlots();
    else if ( choice== 3)
