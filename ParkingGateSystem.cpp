@@ -1,5 +1,5 @@
-#include "ParkingGateSystem.h:
-#include <iostrem>
+#include "ParkingGateSystem.h":
+#include <iostraem>
 #include <ctime>
 
 using namespace std;
