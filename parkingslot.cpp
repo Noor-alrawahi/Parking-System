@@ -20,6 +20,9 @@ bool ParkingSlot::isOccupied() const{
 bool ParkingSlot::isReserved() const{
   return reserved;  }
 
+bool ParkingSlot::isDisabledOnly() const{
+  return disabledOnly;  }
+
 void ParkingSlot::reserve(){
   reserved=true;  }
 
