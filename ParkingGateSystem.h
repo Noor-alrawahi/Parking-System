@@ -32,7 +32,7 @@ private:
   Customer* findCustomer(int id);
   Reservation* findReservation(int reservationID);
   ParkingSession* findSession(int reservationID);
-
+  static double getOmanTimeMinutes();
 public:
   ParkingGateSystem();
   ~ParkingGateSystem();
