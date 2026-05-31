@@ -1,7 +1,7 @@
-# Parking System
+# Parking Gate System
 
 ## Description
 This system manages parking slots, reservations, and payment.
 
 ## Presentation
-[View Slides](./parking-system.pdf)
+[View Slides](Parking%20Gate%20System.pdf)
