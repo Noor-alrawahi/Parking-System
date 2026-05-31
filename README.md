@@ -1,4 +1,4 @@
-# Parking System
+# Parking Gate System
 
 ## Description
 This system manages parking slots, reservations, and payment.
